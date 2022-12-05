@@ -1,3 +1,5 @@
+
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -13,6 +15,7 @@ public class Elephant extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
+
     {
         // Add your action code here.
         if (Greenfoot.isKeyDown("d")) {
@@ -22,6 +25,27 @@ public class Elephant extends Actor
             move(-5);
         }
         eat();
+        if (Greenfoot.isKeyDown("z")) {
+            setLocation(100, getY());
+            
+            
+        }
+        else if (Greenfoot.isKeyDown("x")) {
+            setLocation(200, getY());
+        }
+        else if (Greenfoot.isKeyDown("c")) {
+            setLocation(300, getY());
+        }
+        else if (Greenfoot.isKeyDown("v")) {
+            setLocation(400, getY());
+        }
+        else
+        {
+            //setLocation(600, getY());
+        }
+        //
+        
+        
     }    
 
     public void eat()
@@ -30,7 +54,8 @@ public class Elephant extends Actor
             removeTouching(Apple.class);
             
             MyWorld world = (MyWorld) getWorld();
-            world.spawnApple;
+            world.spawnApple();
+	    world.increaseScore();
         }
     }
 }
