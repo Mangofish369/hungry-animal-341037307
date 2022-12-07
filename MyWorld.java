@@ -35,6 +35,7 @@ public class MyWorld extends World
         
         timeClass.mark();
         spawnApple();
+	score = 0;
     }
     public void act()
     {   
