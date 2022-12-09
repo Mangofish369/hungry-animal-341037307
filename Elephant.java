@@ -29,6 +29,8 @@ public class Elephant extends Actor
 	    idleLeft[i].mirrorHorizontally();
 	    idleLeft[i].scale(80, 80);
 	}
+	idleRight[i];
+	idleLeft[i].scale(80, 80);
 	animTimer.mark();
     }
     
