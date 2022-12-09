@@ -13,15 +13,22 @@ public class Elephant extends Actor
 
     GreenfootSound elephantSound = new GreenfootSound("sounds/elephantcub.mp3");
     SimpleTimer animTimer = new SimpleTimer();
-    GreenfootImage[] idle = new GreenfootImage[8];
+    GreenfootImage[] idleRight = new GreenfootImage[8];
+    GreenfootImage[] idleLeft = new GreenfootImage[8];
+
+    String facing = "right";
 
     public Elephant(){
         
-	for (int i = 0; i < idle.length; i++)
+	for (int i = 0; i < idleRight .length; i++)
 	{
-	    idle[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+	    idleRight[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+	    idleRight[i].scale(80, 80);
+
+	    idleLeft[i] = new GreenfootImage("images/elephant_idle/idle" + i + ".png");
+	    idleLeft[i].mirrorHorizontally();
+	    idleLeft[i].scale(80, 80);
 	}
-	setImage(idle[0]);
 	animTimer.mark();
     }
     
@@ -46,9 +53,11 @@ public class Elephant extends Actor
         // Add your action code here.
         if (Greenfoot.isKeyDown("d")) {
             move(5);
+	    facing = "right";
         }
         if (Greenfoot.isKeyDown("a")) {
             move(-5);
+	    facing = "left";
         }
         
         if (Greenfoot.isKeyDown("z")) {
@@ -86,8 +95,18 @@ public class Elephant extends Actor
 	
         if (animTimer.millisElapsed() > 200)
         {
-	    setImage(idle[i]);
-	    i = (i + 1) % idle.length;
+	    if(facing.equals("right"))
+	    {
+		setImage(idleRight[i]);
+		i = (i + 1) % idleRight.length;
+	    }
+	    else
+	    {
+		setImage(idleLeft[i]);
+		i = (i + 1) % idleLeft.length;
+	    }
+
+	    
 	    animTimer.mark();
 	}
     }
